@@ -12,6 +12,7 @@
 void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top, *second;
+	int temp;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
@@ -23,8 +24,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	second = top->next;
 
 	/* Swap the values of top and second */
-	int temp = top->n;
-
+	temp = top->n;
 	top->n = second->n;
 	second->n = temp;
 }
