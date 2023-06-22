@@ -14,7 +14,6 @@ void add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top, *second;
 	int result;
-
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
@@ -24,9 +23,13 @@ void add(stack_t **stack, unsigned int line_number)
 	top = *stack;
 	second = top->next;
 
-	result = second->n + top->n;
+	/* Add the top two elements of the stack */
+	result = top->n + second->n;
+
+	/* Store the result in the second top element */
 	second->n = result;
 
+	/* Remove the top element from the stack */
 	*stack = second;
 	second->prev = NULL;
 
