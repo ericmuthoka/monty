@@ -7,16 +7,17 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
+	if (!bus.arg)
 	{
-		int value;
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
 
-		if (argc != 2)
-		{
-			print_error(line_number, "usage: push integer");
-			exit(EXIT_FAILURE);
-		}
-
-		value = atoi(argv[1]);
+	{
+		int value = atoi(bus.arg);
 
 		stack_push(stack, value);
 	}
