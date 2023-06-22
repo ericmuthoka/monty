@@ -24,6 +24,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	second = top->next;
 
 	temp = top->n;
+
 	top->n = second->n;
 	second->n = temp;
 }
