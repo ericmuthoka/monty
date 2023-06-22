@@ -54,10 +54,11 @@ int main(int argc, char *argv[])
 	while (stack != NULL)
 	{
 		stack_t *temp = stack;
+
 		stack = stack->next;
 		free(temp);
 	}
 
-	return 0;
+	return (0);
 }
 
