@@ -8,14 +8,15 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	char *valueStr = strtok(NULL, " ");
-
+	stack_t *newNode;
+	int value;
 	if (!valueStr)
 	{
 		printf("L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	int value = atoi(valueStr);
+	value = atoi(valueStr);
 
 	if (value == 0 && *valueStr != '0')
 	{
@@ -23,7 +24,7 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	stack_t *newNode = malloc(sizeof(stack_t));
+	newNode = malloc(sizeof(stack_t));
 
 	if (!newNode)
 	{
