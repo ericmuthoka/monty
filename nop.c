@@ -6,9 +6,8 @@
  *
  * Description: This opcode doesn't perform any action.
  */
-void nop(stack_t **stack, unsigned int line_number)
+void nop(void)
 {
-	(void) stack;
-	(void) line_number;
+
 }
 
