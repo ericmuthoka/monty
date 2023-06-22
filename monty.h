@@ -65,6 +65,6 @@ extern bus_t bus;
  */
 
 void pint(stack_t **head, unsigned int counter);
-
+void free_stack(stack_t *head);
 #endif /* MONTY_H */
 
