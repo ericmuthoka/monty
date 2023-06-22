@@ -67,5 +67,9 @@ void pall(stack_t **head, unsigned int counter);
 void push(stack_t **head, unsigned int counter);
 void pint(stack_t **head, unsigned int counter);
 void free_stack(stack_t *head);
+void addqueue(stack_t **head, int n);
+void f_queue(stack_t **head, unsigned int counter);
+void addnode(stack_t **head, int n;
+
 #endif /* MONTY_H */
 
