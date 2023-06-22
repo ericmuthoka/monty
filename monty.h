@@ -63,7 +63,8 @@ extern bus_t bus;
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO Holberton project
  */
-
+void pall(stack_t **head, unsigned int counter);
+void push(stack_t **head, unsigned int counter);
 void pint(stack_t **head, unsigned int counter);
 void free_stack(stack_t *head);
 #endif /* MONTY_H */
