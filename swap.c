@@ -5,7 +5,7 @@
  * @stack: Double pointer to the stack's head.
  * @line_number: Line number of the instruction being executed.
  *
- * Description: If the stack contains fewer than two elements,
+ * Description: If the stack contains less than two elements,
  * it prints an error message and exits with status EXIT_FAILURE.
  * Otherwise, it swaps the values of the top two elements on the stack.
  */
@@ -23,7 +23,6 @@ void swap(stack_t **stack, unsigned int line_number)
 	top = *stack;
 	second = top->next;
 
-	/* Swap the values of top and second */
 	temp = top->n;
 	top->n = second->n;
 	second->n = temp;
