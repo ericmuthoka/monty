@@ -1,5 +1,4 @@
 #include "monty.h"
-
 /**
  * pall - Prints all values on the stack.
  * @stack: Double pointer to the top of the stack.
