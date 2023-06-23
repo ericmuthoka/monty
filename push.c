@@ -3,42 +3,33 @@
 /**
  * push - Pushes an element to the stack.
  * @stack: Double pointer to the top of the stack.
+ * @value: Value to be pushed.
  * @line_number: Line number where the push opcode is encountered.
+ * Return: Pointer to the newly created node.
  */
-void push(stack_t **stack, unsigned int line_number)
+stack_t *push(stack_t **stack, int value, unsigned int line_number)
 {
-	char *valueStr = strtok(NULL, " ");
-	stack_t *newNode;
-	int value;
-	if (!valueStr)
+	stack_t *new_node;
+
+	(void)line_number;
+
+	new_node = malloc(sizeof(stack_t));
+
+	if (new_node == NULL)
 	{
-		printf("L%d: usage: push integer\n", line_number);
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
-	value = atoi(valueStr);
+	new_node->n = value;
+	new_node->prev = NULL;
+	new_node->next = *stack;
 
-	if (value == 0 && *valueStr != '0')
-	{
-		printf("L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+	if (*stack != NULL)
+		(*stack)->prev = new_node;
 
-	newNode = malloc(sizeof(stack_t));
+	*stack = new_node;
 
-	if (!newNode)
-	{
-		printf("Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-
-	newNode->n = value;
-	newNode->prev = NULL;
-	newNode->next = *stack;
-
-	if (*stack)
-		(*stack)->prev = newNode;
-
-	*stack = newNode;
+	return (new_node);
 }
 

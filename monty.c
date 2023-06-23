@@ -15,14 +15,14 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		printf("USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
 	file = fopen(argv[1], "r");
 	if (!file)
 	{
-		printf("Error: Can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 
@@ -34,7 +34,16 @@ int main(int argc, char *argv[])
 		if (opcode)
 		{
 			if (strcmp(opcode, "push") == 0)
-				push(&stack, line_number);
+			{
+				int value;
+
+				value = atoi(strtok(NULL, " \t\n"));
+				if (push(&stack, value, line_number) == NULL)
+			       	{
+					fprintf(stderr, "Error: malloc failed\n");
+					exit(EXIT_FAILURE);
+				}
+			}
 			else if (strcmp(opcode, "pall") == 0)
 				pall(&stack, line_number);
 			else if (strcmp(opcode, "pint") == 0)
@@ -43,7 +52,7 @@ int main(int argc, char *argv[])
 				pop(&stack, line_number);
 			else
 			{
-				printf("L%d: unknown instruction %s\n", line_number, opcode);
+				fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -54,7 +63,6 @@ int main(int argc, char *argv[])
 	while (stack != NULL)
 	{
 		stack_t *temp = stack;
-
 		stack = stack->next;
 		free(temp);
 	}
