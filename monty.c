@@ -4,7 +4,13 @@
 #include "monty.h"
 
 #define MAX_LINE_LENGTH 1024
-
+/**
+ * main - Entry point of the Monty interpreter program.
+ * @argc: The number of command-line arguments.
+ * @argv: An array of strings containing the command-line arguments.
+ *
+ * Return: 0 upon successful execution, or EXIT_FAILURE if an error occurs.
+ */
 int main(int argc, char *argv[])
 {
 	FILE *file;
@@ -55,10 +61,6 @@ int main(int argc, char *argv[])
 				pint(&stack, line_number);
 			else if (strcmp(opcode, "pop") == 0)
 				pop(&stack, line_number);
-			if (strcmp(opcode, "mod") == 0)
-			{
-				mod(&stack, line_number);
-			}
 			else
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
