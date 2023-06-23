@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 
 				value = atoi(strtok(NULL, " \t\n"));
 				if (push(&stack, value, line_number) == NULL)
-			       	{
+				{
 					fprintf(stderr, "Error: malloc failed\n");
 					exit(EXIT_FAILURE);
 				}
