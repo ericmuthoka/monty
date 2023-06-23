@@ -33,7 +33,12 @@ int main(int argc, char *argv[])
 
 		if (opcode)
 		{
-			if (strcmp(opcode, "push") == 0)
+			if (line[0] == '#')
+			{
+				/* do nothing */
+
+			}
+			else if (strcmp(opcode, "push") == 0)
 			{
 				int value;
 
